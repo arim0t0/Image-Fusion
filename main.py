@@ -3,8 +3,8 @@ from utils.resize import Resize
 import numpy as np
 
 if __name__ == "__main__":
-    rgb_path = "C:/Users/ACER/Pictures/Wheat/Season2/RGB_3Cm_Ortho_20220913.tif"
-    ms_path = "C:/Users/ACER/Pictures/Wheat./Season2/hyper_20220913_3cm.hdr"
+    rgb_path = "PATH_TO_RGB_IMAGE"
+    ms_path = "PATH_TO_MS_IMAGE"
     red_band = 55
     green_band = 33
     blue_band = 12
@@ -27,10 +27,10 @@ if __name__ == "__main__":
     ms_rgb = ms_img[:, :, 0:3]
     ghis_bt = np.uint8(gihs_bt)
     
-    np.save("C:/Users/ACER/Pictures/Wheat/Output/Season2/demo/gihs_bt_2.npy", gihs_bt)
-    np.save("C:/Users/ACER/Pictures/Wheat/Output/Season2/demo/input/ms_img.npy", ms_rgb)
-    np.save("C:/Users/ACER/Pictures/Wheat/Output/Season2/demo/input/rgb_img.npy", rgb_img)
+    np.save("PATH_TO_SAVE_FUSED_IMAGE", gihs_bt)
+    np.save("PATH_TO_SAVE_MS_IMAGE", ms_rgb)
+    np.save("PATH_TO_SAVE_RGB_IMAGE", rgb_img)
 
     sa_ihs_bt = adjust_ihs_brovey.sa_ihs_bt(rgb_img, ms_img, 0.2)
     sa_ihs_bt = np.uint8(sa_ihs_bt)
-    np.save("C:/Users/ACER/Pictures/Wheat/Output/Season2/demo/sa_ihs_bt.npy", sa_ihs_bt)
+    np.save("PATH_TO_SAVE_FUSED_IMAGE", sa_ihs_bt)
