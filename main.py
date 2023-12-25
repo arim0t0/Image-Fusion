@@ -1,4 +1,4 @@
-from utils.adjust_ihs_brovey import AdjustIHSBrovey
+from methods.adjust_ihs_brovey import AdjustIHSBrovey
 from utils.resize import Resize
 import numpy as np
 
