@@ -16,8 +16,8 @@ def pca_fusion_images(multispectral_image, pan_image):
     """
 
     # 1. PCA transform on multispectral image
-    pca = PCA(n_components=3)
-    pca_components = pca.fit_transform(multispectral_image.reshape(-1, 3))
+    pca = PCA(n_components=multispectral_image.shape[-1])
+    pca_components = pca.fit_transform(multispectral_image.reshape(-1, multispectral_image.shape[-1]))
 
     # 2. Histogram matching of panchromatic image to first PC
     matched_pan_image = match_histograms(pan_image, pca_components[:, 0].reshape(multispectral_image.shape[:2]))

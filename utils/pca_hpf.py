@@ -17,8 +17,8 @@ def pca_hpf_fusion(multispectral_img, panchromatic_img, sigma=3, gain=1):
     """
 
     # PCA transformation
-    pca = PCA()
-    pc_components = pca.fit_transform(multispectral_img.reshape(-1, 3))
+    pca = PCA(n_components=multispectral_img.shape[-1])
+    pc_components = pca.fit_transform(multispectral_img.reshape(-1, multispectral_img.shape[-1]))
 
     # Gaussian filtering
     smoothed_pan = ndimage.gaussian_filter(panchromatic_img, sigma=sigma)
