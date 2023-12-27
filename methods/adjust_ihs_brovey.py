@@ -56,7 +56,9 @@ class AdjustIHSBrovey:
         self.pan_image = self.get_pan_img(rgb_img)
         self.intensity_first = self.ms_img[:, :, 0] + self.ms_img[:, :, 1] + self.ms_img[:, :, 2] + self.ms_img[:, :, 3]/4
 
-        coefficients = self.pan_image / (self.intensity_first + k_value * (self.pan_image - self.intensity_first))
+        self.ms_int = (self.ms_img[:, :, 0] + self.ms_img[:, :, 1] + self.ms_img[:, :, 2] + self.ms_img[:, :, 3])/4
+
+        coefficients = self.pan_image / (self.ms_int + k_value * (self.pan_image - self.intensity_first))
 
         red_gihs_bt = coefficients * (self.ms_img[:, :, 0] + k_value * (self.pan_image - self.intensity_first))
         green_gihs_bt = coefficients * (self.ms_img[:, :, 1] + k_value * (self.pan_image - self.intensity_first))
@@ -77,7 +79,9 @@ class AdjustIHSBrovey:
         self.pan_image = self.get_pan_img(rgb_img)
         self.intensity_second = (self.ms_img[:, :, 0] + 0.75 * self.ms_img[:, :, 1] + 0.25 * self.ms_img[:, :, 2] + self.ms_img[:, :, 3])/3
 
-        coefficients = self.pan_image / (self.intensity_second + k_value * (self.pan_image - self.intensity_second))
+        self.ms_int = (self.ms_img[:, :, 0] + self.ms_img[:, :, 1] + self.ms_img[:, :, 2] + self.ms_img[:, :, 3])/4
+
+        coefficients = self.pan_image / (self.ms_int + k_value * (self.pan_image - self.intensity_second))
 
         red_gihs_bt = coefficients * (self.ms_img[:, :, 0] + k_value * (self.pan_image - self.intensity_second))
         green_gihs_bt = coefficients * (self.ms_img[:, :, 1] + k_value * (self.pan_image - self.intensity_second))
