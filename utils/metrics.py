@@ -98,6 +98,8 @@ def mb(img_ref, img_fuse):
     img_fuse = img_fuse.float()
     # MB
     mb = (torch.mean(img_ref) - torch.mean(img_fuse))/(torch.mean(img_ref))
+    # Take absolute value
+    mb = torch.abs(mb)
     mb.requires_grad = True
     return mb
 
